@@ -1,13 +1,13 @@
 import { FC } from "react";
 
 import PremiumMembershipBanner from "../modules/banners/components/PremiumMembershipBanner";
-import FeaturedSongs from "../modules/music/components/FeaturedSongs";
+import MainFeaturedSongs from "../modules/music/Main";
 
 const MainPage: FC = () => {
   return (
     <main className="flex flex-col gap-8">
       <PremiumMembershipBanner />
-      <FeaturedSongs />
+      <MainFeaturedSongs />
     </main>
   );
 };
