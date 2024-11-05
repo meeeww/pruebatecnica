@@ -23,8 +23,8 @@ const FeaturedSongs: FC = () => {
 
     const body = new URLSearchParams({
       grant_type: "client_credentials",
-      client_id: "b0d1f993f8274edaa89515229091537e",
-      client_secret: "c267be977b7c4552b8ea8e6bd4464488",
+      client_id: import.meta.env.VITE_SPOTIFY_CLIENT_ID!,
+      client_secret: import.meta.env.VITE_SPOTIFY_CLIENT_SECRET!,
     });
 
     try {
@@ -36,8 +36,8 @@ const FeaturedSongs: FC = () => {
 
       const accessToken = response.data.access_token;
       return accessToken; // Devuelve el access token para usarlo en llamadas a la API
-    } catch {
-      console.error("Error al obtener el access token");
+    } catch (error) {
+      console.error("Error al obtener el access token:", error);
     }
   };
 
