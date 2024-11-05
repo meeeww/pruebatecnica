@@ -2,11 +2,10 @@ import { FC } from "react";
 
 const Header: FC = () => {
   return (
-    <header className="flex items-center justify-between bg-blue-600 text-white p-8">
+    <header className="flex items-center justify-between text-white p-8 h-[4.2vw] border-gray-900 border-b-4">
       {/* Logo */}
       <nav className="flex">
-        <h1>logo</h1>
-        <h1>polygon</h1>
+        <img src="/Logo.svg" />
       </nav>
 
       {/* Información Usuario */}

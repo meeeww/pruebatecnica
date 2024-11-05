@@ -5,7 +5,7 @@ import FeaturedSongs from "../modules/music/components/FeaturedSongs";
 
 const MainPage: FC = () => {
   return (
-    <main className="flex flex-col gap-4">
+    <main className="flex flex-col gap-8">
       <PremiumMembershipBanner />
       <FeaturedSongs />
     </main>
