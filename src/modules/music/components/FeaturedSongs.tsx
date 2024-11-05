@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 type Song = {
@@ -14,54 +15,43 @@ type Song = {
   video_thumbnail: { url: string | null };
 };
 
+const getAccessToken = async () => {
+  const tokenUrl = "https://accounts.spotify.com/api/token";
+
+  const body = new URLSearchParams({
+    grant_type: "client_credentials",
+    client_id: import.meta.env.VITE_SPOTIFY_CLIENT_ID!,
+    client_secret: import.meta.env.VITE_SPOTIFY_CLIENT_SECRET!,
+  });
+
+  const response = await axios.post(tokenUrl, body.toString(), {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+
+  return response.data.access_token; // Devuelve el access token
+};
+
+const fetchPlaylist = async () => {
+  const token = await getAccessToken();
+  const playlistId = "37i9dQZEVXbNFJfN1Vw8d9"; // ID de la playlist
+
+  const response = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data.tracks.items; // Devuelve solo los elementos de la lista de pistas
+};
+
 const FeaturedSongs: FC = () => {
-  const [songs, setSongs] = useState<Song[] | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  const getAccessToken = async () => {
-    const tokenUrl = "https://accounts.spotify.com/api/token";
-
-    const body = new URLSearchParams({
-      grant_type: "client_credentials",
-      client_id: import.meta.env.VITE_SPOTIFY_CLIENT_ID!,
-      client_secret: import.meta.env.VITE_SPOTIFY_CLIENT_SECRET!,
-    });
-
-    try {
-      const response = await axios.post(tokenUrl, body.toString(), {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
-
-      const accessToken = response.data.access_token;
-      return accessToken; // Devuelve el access token para usarlo en llamadas a la API
-    } catch (error) {
-      console.error("Error al obtener el access token:", error);
-    }
-  };
-
-  useEffect(() => {
-    const getPlaylist = async () => {
-      try {
-        const token = await getAccessToken();
-        const playlistId = "37i9dQZEVXbNFJfN1Vw8d9";
-
-        const response = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setSongs(response.data.tracks.items);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error al obtener la playlist:", error);
-      }
-    };
-
-    getPlaylist();
-  }, []);
+  const { data: songs, isLoading, error } = useQuery<Song[], Error>({
+    queryKey: ["featuredSongs"], // Clave de la consulta
+    queryFn: fetchPlaylist, // Obtener datos
+    staleTime: 1000 * 60 * 5, // Almacenar en caché por 5m
+  });
 
   return (
     <div className="flex flex-col gap-4">
@@ -76,7 +66,7 @@ const FeaturedSongs: FC = () => {
       </div>
 
       <div className="flex gap-8 overflow-x-scroll no-scrollbar mt-4 min-w-[100%]">
-        {loading ? (
+        {isLoading ? (
           <div className="flex items-center justify-center w-full h-64 text-gray-100">
             <div className="lds-ring">
               <div></div>
@@ -85,9 +75,10 @@ const FeaturedSongs: FC = () => {
               <div></div>
             </div>
           </div>
+        ) : error ? (
+          <div className="text-red-500">Error al obtener la playlist: {error.message}</div>
         ) : (
-          songs &&
-          songs.map((song: Song, index: number) => (
+          songs?.map((song: Song, index: number) => (
             <div key={index} className="flex-none w-[15.125rem] h-[18.125rem] flex flex-col gap-3 pb-4 bg-[#211626] rounded-2xl">
               <a href={song.track.album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                 <div className="relative w-full h-[12rem]">
