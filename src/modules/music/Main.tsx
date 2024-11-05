@@ -16,7 +16,7 @@ const MainFeaturedSongs: FC = () => {
         </nav>
       </div>
 
-      <div className="flex gap-8 overflow-x-scroll no-scrollbar mt-4 min-w-[100%]">
+      <div className="flex gap-8 overflow-x-scroll no-scrollbar mt-4 min-w-[100%] pb-1">
         <FeaturedSongs playListId={playListId} />
       </div>
     </div>

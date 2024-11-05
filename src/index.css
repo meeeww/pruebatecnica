@@ -8,16 +8,26 @@ html {
 
 /* CSS Para no mostrar el scrollbar */
 @layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  /* Estilo para Chrome, Safari y Opera */
+  /* Oculta la barra de desplazamiento vertical */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+  
+  /* Fondo de la barra de desplazamiento */
+  ::-webkit-scrollbar-track {
+    background: rgba(229, 231, 235, 0.3);
+    border-radius: 10px;
+  }
+  
+  /* Estilo del "thumb" (parte deslizable) */
+  ::-webkit-scrollbar-thumb {
+    background: #0a0b14;
+    border-radius: 10px;
   }
 }
+
 
 /* CSS Para el loader */
 .lds-ring,
