@@ -8,3 +8,7 @@ Uso de React con TypeScript añadiendo TailwindCSS para los estilos y Axios para
 
 ## Estructuración de Proyecto
 Se empleará la estructuración llamada "screaming architecture", indicando qué hacemos en cada carpeta. En estas carpetas añadiremos otras subcarpetas indicando components/, hooks/, etc.
+
+# Web en despliegue
+Desplegado en Vercel.
+https://pruebatecnica-xi.vercel.app/
