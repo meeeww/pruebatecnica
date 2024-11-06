@@ -44,9 +44,9 @@ const FeaturedSongs: FC<FeaturedSongsProps> = ({ playListId }) => {
       ) : error ? (
         <div className="text-red-500">Error al obtener la playlist: {error.message}</div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full justify-center mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-20 w-full justify-center mx-auto pb-20">
           {songs?.map((song: Song, index: number) => (
-            <div key={index} className="w-full h-[18.125rem] flex flex-col gap-3 pb-4 bg-[#211626] rounded-2xl">
+            <div key={index} className="w-full h-[20rem] flex flex-col gap-3 pb-4 bg-[#211626] rounded-2xl relative">
               <a href={song.track.album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                 <div className="relative w-full h-[12rem]">
                   <img
@@ -64,6 +64,19 @@ const FeaturedSongs: FC<FeaturedSongsProps> = ({ playListId }) => {
                     <p className="text-gray-300 font-medium text-[13px]">{song.track.artists[0].name}</p>
                   </div>
                 </a>
+              </div>
+
+              {/* Debajo de la tarjeta */}
+              <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 bg-[#2E1A33] w-[90%] h-12 rounded-full flex items-center justify-around">
+                <button className="text-white">
+                  <img src="/icons/Handshake.svg" alt="Compartir" className="w-6 h-6" />
+                </button>
+                <button className="text-white">
+                  <img src="/icons/ShoppingCart.svg" alt="Comprar" className="w-6 h-6" />
+                </button>
+                <button className="text-white">
+                  <img src="/icons/Heart.svg" alt="Me gusta" className="w-6 h-6" />
+                </button>
               </div>
             </div>
           ))}
