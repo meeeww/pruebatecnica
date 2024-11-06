@@ -4,7 +4,7 @@ const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="flex items-center justify-between text-white p-8 h-[79px] border-gray-900 border-b-4 relative">
+    <header className="flex items-center justify-between text-white p-8 px-10 h-[79px] border-gray-900 border-b-4 relative">
       {/* Logo */}
       <nav className="flex">
         <a href="/">
