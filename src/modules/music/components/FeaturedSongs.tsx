@@ -48,12 +48,12 @@ const FeaturedSongs: FC<FeaturedSongsProps> = ({ playListId }) => {
           {songs?.map((song: Song, index: number) => (
             <div key={index} className="w-full h-[20rem] flex flex-col gap-3 pb-4 bg-[#211626] rounded-2xl relative">
               <a href={song.track.album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                <div className="relative w-full h-[12rem]">
-                  <img src="/icons/Play.svg" alt="Play" className="absolute z-10 w-8 h-8 opacity-80 right-0 m-4 hover:scale-110 transition-transform"/>
+                <div className="relative w-full h-[12rem] rounded-t-lg overflow-hidden ">
+                  <img src="/icons/Play.svg" alt="Play" className="absolute z-10 w-8 h-8 opacity-80 right-0 m-4 "/>
                   <img
                     src={song.track.album.images[0].url}
                     alt={song.track.album.name}
-                    className="absolute top-0 left-0 w-full h-full object-cover rounded-t-lg"
+                    className="absolute top-0 left-0 w-full h-full object-cover hover:scale-110 transition-transform"
                   />
                 </div>
               </a>
@@ -71,13 +71,13 @@ const FeaturedSongs: FC<FeaturedSongsProps> = ({ playListId }) => {
               {index == 0 ? (
                 <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 bg-[#2E1A33] w-[90%] h-12 rounded-full flex items-center justify-around">
                   <button className="text-white">
-                    <img src="/icons/Handshake.svg" alt="Compartir" className="w-6 h-6" />
+                    <img src="/icons/Handshake.svg" alt="Compartir" className="w-6 h-6 hover:scale-110 transition-transform" />
                   </button>
                   <button className="text-white">
-                    <img src="/icons/ShoppingCart.svg" alt="Comprar" className="w-6 h-6" />
+                    <img src="/icons/ShoppingCart.svg" alt="Comprar" className="w-6 h-6 hover:scale-110 transition-transform" />
                   </button>
                   <button className="text-white">
-                    <img src="/icons/Heart.svg" alt="Me gusta" className="w-6 h-6" />
+                    <img src="/icons/Heart.svg" alt="Me gusta" className="w-6 h-6 hover:scale-110 transition-transform" />
                   </button>
                 </div>
               ) : (
