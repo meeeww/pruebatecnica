@@ -13,7 +13,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <Header />
 
       {/* Main Content */}
-      <main className="flex-grow p-8 pt-0">{children}</main>
+      <main className="flex-grow p-10 pt-0">{children}</main>
     </div>
   );
 };

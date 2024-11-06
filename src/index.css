@@ -1,31 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   background-color: #0a0b14;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 /* CSS Para no mostrar el scrollbar */
 @layer utilities {
   /* Estilo para Chrome, Safari y Opera */
   /* Oculta la barra de desplazamiento vertical */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 10px;
+  @layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+   /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
   }
-  
-  /* Fondo de la barra de desplazamiento */
-  ::-webkit-scrollbar-track {
-    background: rgba(229, 231, 235, 0.3);
-    border-radius: 10px;
-  }
-  
-  /* Estilo del "thumb" (parte deslizable) */
-  ::-webkit-scrollbar-thumb {
-    background: #0a0b14;
-    border-radius: 10px;
-  }
+}
 }
 
 
