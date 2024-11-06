@@ -10,9 +10,9 @@ const MainFeaturedSongs: FC = () => {
         <h2 className="font-semibold text-gray-100 tracking-wider text-2xl">Obras destacadas</h2>
 
         <nav className="flex flex-col sm:flex-row mt-1 gap-6 font-medium text-gray-400 tracking-wider text-sm">
-          <a href="#">Music</a>
-          <a href="#">Collectibles</a>
-          <a href="#">Utility</a>
+          <a href="#" className="hover:text-gray-100 transition-colors">Music</a>
+          <a href="#" className="hover:text-gray-100 transition-colors">Collectibles</a>
+          <a href="#" className="hover:text-gray-100 transition-colors">Utility</a>
         </nav>
       </div>
 

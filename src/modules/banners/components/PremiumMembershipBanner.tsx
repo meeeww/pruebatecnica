@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const PremiumMembershipBanner: FC = () => {
   return (
-    <div className="flex items-center justify-between bg-gradient-to-r from-[#7953DC] to-[#3AAAD9] w-full h-[22.125rem] rounded-xl p-6 sm:p-12 lg:p-40 overflow-hidden">
+    <div className="flex items-center justify-center sm:justify-between bg-gradient-to-r from-[#7953DC] to-[#3AAAD9] w-full h-[22.125rem] rounded-xl p-6 sm:p-12 lg:p-40 overflow-hidden">
       <div className="flex flex-col gap-8 max-w-md">
         <h2 className="text-[45px] font-bold text-white leading-[45px]">
           Membresía <br /> Premium

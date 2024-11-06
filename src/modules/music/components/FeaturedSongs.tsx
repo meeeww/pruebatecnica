@@ -67,17 +67,21 @@ const FeaturedSongs: FC<FeaturedSongsProps> = ({ playListId }) => {
               </div>
 
               {/* Debajo de la tarjeta */}
-              <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 bg-[#2E1A33] w-[90%] h-12 rounded-full flex items-center justify-around">
-                <button className="text-white">
-                  <img src="/icons/Handshake.svg" alt="Compartir" className="w-6 h-6" />
-                </button>
-                <button className="text-white">
-                  <img src="/icons/ShoppingCart.svg" alt="Comprar" className="w-6 h-6" />
-                </button>
-                <button className="text-white">
-                  <img src="/icons/Heart.svg" alt="Me gusta" className="w-6 h-6" />
-                </button>
-              </div>
+              {index == 0 ? (
+                <div className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 bg-[#2E1A33] w-[90%] h-12 rounded-full flex items-center justify-around">
+                  <button className="text-white">
+                    <img src="/icons/Handshake.svg" alt="Compartir" className="w-6 h-6" />
+                  </button>
+                  <button className="text-white">
+                    <img src="/icons/ShoppingCart.svg" alt="Comprar" className="w-6 h-6" />
+                  </button>
+                  <button className="text-white">
+                    <img src="/icons/Heart.svg" alt="Me gusta" className="w-6 h-6" />
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           ))}
         </div>
