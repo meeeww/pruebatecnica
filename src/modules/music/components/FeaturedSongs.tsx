@@ -49,6 +49,7 @@ const FeaturedSongs: FC<FeaturedSongsProps> = ({ playListId }) => {
             <div key={index} className="w-full h-[20rem] flex flex-col gap-3 pb-4 bg-[#211626] rounded-2xl relative">
               <a href={song.track.album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
                 <div className="relative w-full h-[12rem]">
+                  <img src="/icons/Play.svg" alt="Play" className="absolute z-10 w-8 h-8 opacity-80 right-0 m-4 hover:scale-110 transition-transform"/>
                   <img
                     src={song.track.album.images[0].url}
                     alt={song.track.album.name}
